@@ -53,6 +53,16 @@ export default class World {
       color = island.getRandomColor();
       name = island.getRandomName();
     };
+
+    // create a new div with class island
+    //add the random color as background and the random name as text
+    const newIsland = document.createElement("div");
+    newIsland.classList.add("island");
+    newIsland.style.backgroundColor = color;
+    newIsland.textContent = name;
+
+    // add the island the div with id app
+    document.querySelector("#app").appendChild(newIsland);
   }
 
   moveIsland(island) {
