@@ -69,10 +69,27 @@ export default class World {
     newIsland.style.left = coordinates.x + "px";
     newIsland.style.top = coordinates.y + "px";
 
+    //add the island color and name to the this.islands array
+    this.islands.push({ color, name });
+
+    this.moveIsland(newIsland);
   }
 
   moveIsland(island) {
     // this might be a good point to animate the islands with JS Animations API
-    
+    //get random coordinates
+    const coordinates = this.getCoordinates();
+    // use js web animations api to animate div from original coordinates to new coordinates
+    let plusOrMinus1 = Math.random() < 0.5 ? -1 : 1;
+    let plusOrMinus2 = Math.random() < 0.5 ? -1 : 1;
+    let coordinatesX = coordinates.x * plusOrMinus1;
+    let coordinatesY = coordinates.y * plusOrMinus2;
+    island.animate([
+        { transform: `translate(${island.style.left}, ${island.style.top})`, opacity: 0 },
+        { transform: `translate(${coordinatesX}, ${coordinatesY})`, opacity: 1 },
+    ], {
+        duration: 1000,
+        iterations: 1
+    });
   }
 }
