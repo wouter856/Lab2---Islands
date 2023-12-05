@@ -28,14 +28,27 @@ export default class World {
 
   save() {
     // save array islands to localstorage as string
-    // loop over all this.islands and save the names
+    // loop over all this.islands and save the names and colors to localstorage
+    const savedIslands = this.islands.map((island) => {
+        return { 
+            name: island.name, 
+            color: island.color 
+        };
+    });
     
+    localStorage.setItem("islands", JSON.stringify(savedIslands));
   }
 
   load() {
     // load islands from localstorage into array
     // loop over the array and addIslands()
-    
+    const savedIslands = JSON.parse(localStorage.getItem("islands"));
+
+    // remove all existing islands and reload with the parsed islands
+    document.querySelector("#app").innerHTML = "";
+    savedIslands.forEach((island) => {
+        this.addIsland(island.color, island.name);
+    });
   }
 
   getCoordinates() {
