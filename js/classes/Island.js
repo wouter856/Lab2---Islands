@@ -8,7 +8,7 @@ export default class Island {
     remove() {
         //JS animations API, fade out and remove from DOM
         //remove the element when the animation ended
-        
+
     }
   
     getRandomName() {
@@ -26,7 +26,7 @@ export default class Island {
             "Jelle"
       ];
   
-      // return a random name from the array
+      // return a random name from the names array
       return names[Math.floor(Math.random() * names.length)];
     }
   }

@@ -40,10 +40,9 @@ export default class World {
 
   getCoordinates() {
     // return coordinates within the screen at random, feel free to change it up!
-    let randomSign = Math.random() < 0.5 ? -1 : 1;
     return {
-      x: ((Math.random() * window.innerWidth) / 2 - 100) * randomSign,
-      y: ((Math.random() * window.innerHeight) / 2 - 100) * randomSign,
+        x: (Math.random() * (window.innerWidth)),
+        y: (Math.random() * (window.innerHeight - 100))
     };
   }
 
@@ -61,8 +60,15 @@ export default class World {
     newIsland.style.backgroundColor = color;
     newIsland.textContent = name;
 
-    // add the island the div with id app
+    // add the island to the div with id app
     document.querySelector("#app").appendChild(newIsland);
+
+    //give it random coordinates within the screen
+    const coordinates = this.getCoordinates();
+    console.log(coordinates);
+    newIsland.style.left = coordinates.x + "px";
+    newIsland.style.top = coordinates.y + "px";
+
   }
 
   moveIsland(island) {
