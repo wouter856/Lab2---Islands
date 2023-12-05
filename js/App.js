@@ -1,4 +1,4 @@
-// kickstart your world here
+// import world
 import World from "./classes/World.js";
 //import css
 import "../style.css";
